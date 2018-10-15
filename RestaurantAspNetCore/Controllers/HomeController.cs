@@ -38,5 +38,33 @@ namespace RestaurantAspNetCore.Controllers
 
 			return View(model);
 		}
+
+		[HttpGet]
+		public IActionResult Create()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Create(RestaurantEditModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				var newRestaurant = new Restaurant
+				{
+					Name = model.Name,
+					Cuisine = model.Cuisine
+				};
+
+				newRestaurant = _restaurantData.Add(newRestaurant);
+
+				return RedirectToAction(nameof(Details), new { id = newRestaurant.Id });
+			}
+			else
+			{
+				return View();
+			}
+		}
     }
 }

@@ -8,5 +8,7 @@ namespace RestaurantAspNetCore.Services
 		IEnumerable<Restaurant> GetAll();
 
 		Restaurant Get(int id);
+
+		Restaurant Add(Restaurant restaurant);
 	}
 }

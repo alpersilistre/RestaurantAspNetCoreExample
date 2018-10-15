@@ -29,5 +29,13 @@ namespace RestaurantAspNetCore.Services
 		{
 			return restaurants.OrderBy(r => r.Name);
 		}
+
+		public Restaurant Add (Restaurant restaurant)
+		{
+			restaurant.Id = restaurants.Max(x => x.Id) + 1;
+			restaurants.Add(restaurant);
+
+			return restaurant;
+		}
 	}
 }
