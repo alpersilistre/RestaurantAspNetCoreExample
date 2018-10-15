@@ -20,6 +20,11 @@ namespace RestaurantAspNetCore.Services
 			};
 		}
 
+		public Restaurant Get(int id)
+		{
+			return restaurants.FirstOrDefault(x => x.Id == id);
+		}
+
 		public IEnumerable<Restaurant> GetAll()
 		{
 			return restaurants.OrderBy(r => r.Name);
